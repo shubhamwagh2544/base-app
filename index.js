@@ -10,4 +10,6 @@ app.get('/', (req, res) => {
     res.send('Shubham says Hello...!');
 })
 
-app.listen(8080);
+app.listen(8080, () => {
+    console.log('server started on 8080');
+});
