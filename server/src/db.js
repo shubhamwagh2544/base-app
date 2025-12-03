@@ -1,4 +1,6 @@
 import {Sequelize} from "sequelize";
+import dotenv from "dotenv";
+dotenv.config();
 import pkg from 'lodash/lang.js';
 const {isNil} = pkg;
 

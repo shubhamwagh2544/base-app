@@ -1,5 +1,7 @@
 import express from "express";
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
 
 import { sequelize, testConnection } from "./db.js";
 import { initModels } from "./models/index.js";
