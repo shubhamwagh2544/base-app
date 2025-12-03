@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {API_URL} from "./config.js";
 
 export function Profile() {
     const [user, setUser] = useState(null);
     const userId = localStorage.getItem("userId");
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchProfile() {
