@@ -1,15 +1,21 @@
 import {Sequelize} from "sequelize";
 import dotenv from "dotenv";
-dotenv.config();
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import pkg from 'lodash/lang.js';
 const {isNil} = pkg;
 
-const DB_URL = process.env.DATABASE_URL;
-if (isNil(DB_URL)) {
-    throw new Error('Database URL is mandatory');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.join(__dirname, "..", ".env") });
+
+const connectionString = process.env.DATABASE_URL;
+if (isNil(connectionString)) {
+    throw new Error("Database URL is mandatory");
 }
 
-export const sequelize = new Sequelize(DB_URL, {
+export const sequelize = new Sequelize(connectionString, {
     dialect: "postgres",
     logging: false, // console.log to see SQL
     pool: {
